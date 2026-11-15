@@ -1,0 +1,197 @@
+{
+  "project": "FlameGuard X",
+  "module": "Scientific Intelligence Core",
+  "status": "PRECOMPUTED_ANALYSIS",
+  "source": "NASA PSI-69",
+  "discovery": {
+    "candidate_pairs": 628,
+    "top_findings": [
+      {
+        "fuel": "Heptane",
+        "test_a": "PSI-69-T050",
+        "test_b": "PSI-69-T205",
+        "condition_distance": 0.0934,
+        "burn_time_a": 8.4,
+        "burn_time_b": 24.0,
+        "burn_time_difference": 15.6,
+        "exploration_score": 14.267422718126944
+      },
+      {
+        "fuel": "Heptane",
+        "test_a": "PSI-69-T050",
+        "test_b": "PSI-69-T204",
+        "condition_distance": 0.0991,
+        "burn_time_a": 8.4,
+        "burn_time_b": 23.9,
+        "burn_time_difference": 15.5,
+        "exploration_score": 14.102447457010282
+      },
+      {
+        "fuel": "Methanol",
+        "test_a": "PSI-69-T077",
+        "test_b": "PSI-69-T215",
+        "condition_distance": 0.2719,
+        "burn_time_a": 8.5,
+        "burn_time_b": 26.0,
+        "burn_time_difference": 17.5,
+        "exploration_score": 13.75894331315355
+      },
+      {
+        "fuel": "Methanol",
+        "test_a": "PSI-69-T215",
+        "test_b": "PSI-69-T217",
+        "condition_distance": 0.2186,
+        "burn_time_a": 26.0,
+        "burn_time_b": 9.5,
+        "burn_time_difference": 16.5,
+        "exploration_score": 13.540128015755789
+      },
+      {
+        "fuel": "Heptane",
+        "test_a": "PSI-69-T049",
+        "test_b": "PSI-69-T204",
+        "condition_distance": 0.1475,
+        "burn_time_a": 8.6,
+        "burn_time_b": 23.9,
+        "burn_time_difference": 15.3,
+        "exploration_score": 13.333333333333334
+      },
+      {
+        "fuel": "Heptane",
+        "test_a": "PSI-69-T049",
+        "test_b": "PSI-69-T205",
+        "condition_distance": 0.1705,
+        "burn_time_a": 8.6,
+        "burn_time_b": 24.0,
+        "burn_time_difference": 15.4,
+        "exploration_score": 13.156770610850064
+      },
+      {
+        "fuel": "Methanol",
+        "test_a": "PSI-69-T065",
+        "test_b": "PSI-69-T077",
+        "condition_distance": 0.2122,
+        "burn_time_a": 24.3,
+        "burn_time_b": 8.5,
+        "burn_time_difference": 15.8,
+        "exploration_score": 13.034152780069295
+      },
+      {
+        "fuel": "Heptane",
+        "test_a": "PSI-69-T205",
+        "test_b": "PSI-69-T230",
+        "condition_distance": 0.1275,
+        "burn_time_a": 24.0,
+        "burn_time_b": 9.6,
+        "burn_time_difference": 14.4,
+        "exploration_score": 12.771618625277164
+      },
+      {
+        "fuel": "Heptane",
+        "test_a": "PSI-69-T204",
+        "test_b": "PSI-69-T230",
+        "condition_distance": 0.1519,
+        "burn_time_a": 23.9,
+        "burn_time_b": 9.6,
+        "burn_time_difference": 14.3,
+        "exploration_score": 12.414272072228494
+      },
+      {
+        "fuel": "Methanol",
+        "test_a": "PSI-69-T151",
+        "test_b": "PSI-69-T158",
+        "condition_distance": 0.8197,
+        "burn_time_a": 31.3,
+        "burn_time_b": 10.1,
+        "burn_time_difference": 21.2,
+        "exploration_score": 11.65027202286091
+      }
+    ],
+    "interpretation": "Exploratory candidates requiring scientific validation, not confirmed discoveries."
+  },
+  "quantitative_intelligence": {
+    "case": "Heptane matched-condition investigation",
+    "sample_size": 6,
+    "experiments": [
+      {
+        "test_id": "PSI-69-T050",
+        "pressure_mmhg": 770.1,
+        "droplet_diameter_mm": 3.57,
+        "burn_time_s": 8.4
+      },
+      {
+        "test_id": "PSI-69-T049",
+        "pressure_mmhg": 764.9,
+        "droplet_diameter_mm": 3.46,
+        "burn_time_s": 8.6
+      },
+      {
+        "test_id": "PSI-69-T230",
+        "pressure_mmhg": 769.2,
+        "droplet_diameter_mm": 3.65,
+        "burn_time_s": 9.6
+      },
+      {
+        "test_id": "PSI-69-T047",
+        "pressure_mmhg": 770.1,
+        "droplet_diameter_mm": 3.36,
+        "burn_time_s": 17.1
+      },
+      {
+        "test_id": "PSI-69-T204",
+        "pressure_mmhg": 756.5,
+        "droplet_diameter_mm": 3.56,
+        "burn_time_s": 23.9
+      },
+      {
+        "test_id": "PSI-69-T205",
+        "pressure_mmhg": 757.3,
+        "droplet_diameter_mm": 3.58,
+        "burn_time_s": 24.0
+      }
+    ],
+    "median_burn_time_s": 13.350000000000001,
+    "burn_time_range_s": 15.6,
+    "bootstrap_median_interval_95_s": [
+      8.5,
+      23.95
+    ],
+    "bootstrap_caveat": "Exploratory interval based on six observations; assumes independent comparable measurements."
+  },
+  "mission_evidence": {
+    "project": "FlameGuard X",
+    "module": "Mission Evidence Intelligence",
+    "source": "NASA PSI-69",
+    "research_question": "How consistent are recorded heptane droplet burn times under similar experimental conditions?",
+    "evidence": {
+      "matched_experiments": 6,
+      "test_ids": [
+        "PSI-69-T050",
+        "PSI-69-T049",
+        "PSI-69-T230",
+        "PSI-69-T047",
+        "PSI-69-T204",
+        "PSI-69-T205"
+      ],
+      "median_burn_time_s": 13.350000000000001,
+      "burn_time_range_s": 15.6,
+      "missing_extinction_measurements": 3
+    },
+    "evidence_readiness": "LIMITED",
+    "evidence_flags": [
+      "SMALL_SAMPLE",
+      "HIGH_OUTCOME_VARIABILITY",
+      "MISSING_EXTINCTION_MEASUREMENTS"
+    ],
+    "causal_claim_supported": false,
+    "mission_relevance": "Highlights uncertainty in microgravity droplet combustion measurements relevant to combustion research and future spacecraft fire-safety studies.",
+    "limitations": [
+      "Small observational sample",
+      "Possible unrecorded experimental differences",
+      "No validated spacecraft fire-risk prediction",
+      "No demonstrated causal explanation"
+    ],
+    "recommended_next_experiment": "Repeat heptane droplet combustion measurements with tightly controlled oxygen, pressure, droplet diameter, gas composition and consistent burn-time and extinction reporting.",
+    "safety_decision": "NOT SUFFICIENT FOR SPACECRAFT SAFETY CERTIFICATION"
+  }
+}

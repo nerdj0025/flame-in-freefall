@@ -1,0 +1,4 @@
+# Only needed to run the new model INSIDE this backend (FF_AI_MODE=local). Big download (PyTorch).
+# Not needed if FF_AI_URL points at the Colab server, or for the legacy engine.
+-r requirements.txt
+sentence-transformers>=3.0

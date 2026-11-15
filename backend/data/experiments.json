@@ -1,0 +1,429 @@
+{
+  "title": "PSI combustion experiments: metadata for PSI-25, PSI-26, PSI-69, PSI-98, PSI-102",
+  "created": "2026-11-14",
+  "psi_meaning": "NASA Physical Sciences Informatics (PSI) repository",
+  "link_status_legend": {
+    "opened": "page was read while building this file",
+    "listed_in_search_results (not opened)": "appeared in a web search; not read",
+    "listed_in_search_results (page is script-rendered; content not readable)": "URL found in a web search; the page content could not be read",
+    "cited_by_eoportal_article_not_opened": "URL taken from a secondary article; not opened",
+    "constructed_from_url_pattern_not_verified": "built from the pattern of the verified PSI-69 URL; may not resolve"
+  },
+  "notes": [
+    "Descriptions, objectives and results are paraphrased from the sources listed per experiment; they are not copied from the PSI repository pages, which could not be read.",
+    "Fields set to empty lists mean the information was not found in the sources consulted, not that it does not exist."
+  ],
+  "experiments": [
+    {
+      "experiment_id": "PSI-25",
+      "psi_id": "PSI-25",
+      "short_name": "BASS-II",
+      "full_name": "Burning and Suppression of Solids II",
+      "platform": "International Space Station, Microgravity Science Glovebox (per NTRS abstract)",
+      "principal_investigators": {
+        "listed_in_data": [
+          "Bhattacharjee",
+          "Ferkul",
+          "Fernandez-Pello",
+          "Miller",
+          "Olson",
+          "T'ien"
+        ],
+        "note": "Surnames as given in the PI column of the table; test counts: Bhattacharjee 22, Ferkul 4, Fernandez-Pello 27, Miller 20, Olson 27, T'ien 29"
+      },
+      "description": "Second phase of the Burning and Suppression of Solids investigation. Flames on solid fuels were burned in a small wind tunnel in microgravity. Samples include thin and thick flat samples, acrylic (PMMA) slabs and rods, spheres and cylinders; this table also lists Nomex, SIBAL, SIBAL-type and candle (wax) samples.",
+      "objectives": [
+        "Improve spacecraft fire safety and the understanding of how combustion behaves in space, so fires can be avoided.",
+        "Learn how airflow speed, fuel thickness, preheating of the fuel and oxygen concentration change flame appearance, growth, spread and extinction, in both opposed-flow and concurrent-flow configurations.",
+        "Support selection of the safest spacecraft materials and better fire-fighting methods for future missions."
+      ],
+      "documented_results": [
+        {
+          "finding": "Flames were found to be very sensitive to airflow in the 0-5 cm/s range.",
+          "source": "NTRS 20160000593 (abstract)",
+          "source_url": "https://ntrs.nasa.gov/citations/20160000593"
+        },
+        {
+          "finding": "At very low airflow (below roughly 1 cm/s) flames persisted as dim, steady blue flames. These are less hazardous, but a sudden rise in airflow can make them flare up quickly.",
+          "source": "NTRS 20160000593 (abstract)",
+          "source_url": "https://ntrs.nasa.gov/citations/20160000593"
+        },
+        {
+          "finding": "The paper reports well over 100 tests across BASS and BASS-II combined, covering different sample shapes, flow speeds and oxygen levels. It covers both phases, so some findings may stem from PSI-26 runs.",
+          "source": "NTRS 20160000593 (abstract)",
+          "source_url": "https://ntrs.nasa.gov/citations/20160000593"
+        }
+      ],
+      "nasa_links": [
+        {
+          "title": "NTRS: BASS / BASS-II paper",
+          "url": "https://ntrs.nasa.gov/citations/20160000593",
+          "type": "nasa_technical_report",
+          "status": "opened"
+        },
+        {
+          "title": "LabXchange: Burning and Suppression of Solids II (BASS-II)",
+          "url": "https://www.labxchange.org/library/items/lb:LabXchange:ffbaa865:html:1",
+          "type": "educational_page",
+          "status": "opened"
+        },
+        {
+          "title": "NASA PSI Data Repository",
+          "url": "https://psi.nasa.gov/physci/repo/",
+          "type": "psi_repository",
+          "status": "listed_in_search_results"
+        },
+        {
+          "title": "PSI investigation page PSI-25",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-25",
+          "type": "psi_repository",
+          "status": "constructed_from_url_pattern_not_verified"
+        }
+      ],
+      "dataset": {
+        "source_file": "PSI-25_Experimental table_BASS-II.csv",
+        "source_data_rows": 129,
+        "tests_in_measurements_csv": 129,
+        "measurement_rows": 1400,
+        "distinct_material_labels": 49,
+        "tests_with_data_notes": 7,
+        "test_date_range": {
+          "first": "2014-02-14",
+          "last": "2018-06-24"
+        },
+        "excluded_source_records": [],
+        "measured_quantities": "Calibrated initial/final O2 (% by volume), CO2 (% by volume) and CO (ppm) in the chamber, frames shot, flow restrictor setting; free-text fan/air display and radiometer gain settings."
+      }
+    },
+    {
+      "experiment_id": "PSI-26",
+      "psi_id": "PSI-26",
+      "short_name": "BASS",
+      "full_name": "Burning and Suppression of Solids",
+      "platform": "International Space Station, microgravity combustion investigation (ISS National Lab / LabXchange description)",
+      "principal_investigators": {
+        "listed_in_data": [],
+        "note": "Not given in the table or in the pages consulted."
+      },
+      "description": "First phase of the Burning and Suppression of Solids investigation, which tested a wide range of solid fuel samples. This table is a run log (date, GMT day of year, as-run order, test number, sample number, fuel material) with samples such as SIBAL, PMMA spheres and slabs, Nomex, ultem sheet and candle / wax slabs. It contains no measured values besides the run order.",
+      "objectives": [
+        "Study how a wide range of solid fuels burn in microgravity and when their flames go out.",
+        "Provide knowledge relevant to fire safety on spacecraft."
+      ],
+      "documented_results": [
+        {
+          "finding": "No specific findings are given on the project pages consulted. NTRS 20160000593 covers BASS and BASS-II together (see PSI-25).",
+          "source": "LabXchange BASS page; NTRS 20160000593",
+          "source_url": "https://ntrs.nasa.gov/citations/20160000593"
+        }
+      ],
+      "nasa_links": [
+        {
+          "title": "LabXchange: Burning and Suppression of Solids (BASS)",
+          "url": "https://www.labxchange.org/library/items/lb:LabXchange:22705850:html:1",
+          "type": "educational_page",
+          "status": "opened"
+        },
+        {
+          "title": "ISS National Lab: Burning and Suppression of Solids",
+          "url": "https://issnationallab.org/?p=42222",
+          "type": "iss_national_lab",
+          "status": "listed_in_search_results (not opened)"
+        },
+        {
+          "title": "NTRS: BASS / BASS-II paper",
+          "url": "https://ntrs.nasa.gov/citations/20160000593",
+          "type": "nasa_technical_report",
+          "status": "opened"
+        },
+        {
+          "title": "NASA PSI Data Repository",
+          "url": "https://psi.nasa.gov/physci/repo/",
+          "type": "psi_repository",
+          "status": "listed_in_search_results"
+        },
+        {
+          "title": "PSI investigation page PSI-26",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+          "type": "psi_repository",
+          "status": "constructed_from_url_pattern_not_verified"
+        }
+      ],
+      "dataset": {
+        "source_file": "PSI-26_Experimental table_BASS.csv",
+        "source_data_rows": 122,
+        "tests_in_measurements_csv": 121,
+        "measurement_rows": 121,
+        "distinct_material_labels": 33,
+        "tests_with_data_notes": 15,
+        "test_date_range": {
+          "first": "2012-03-30",
+          "last": "2103-05-15"
+        },
+        "excluded_source_records": [
+          {
+            "source_row": 67,
+            "content": "SOOT Cleaning",
+            "date": "8/3/2012",
+            "reason": "Not a test: no test number or sample number (maintenance entry)"
+          }
+        ],
+        "measured_quantities": "Only 'As Run Test #' (run order) is numeric; the rest are labels (test number, sample number, material)."
+      }
+    },
+    {
+      "experiment_id": "PSI-69",
+      "psi_id": "PSI-69",
+      "short_name": "FLEX",
+      "full_name": "Flame Extinguishment Experiment",
+      "platform": "International Space Station, Multi-User Droplet Combustion Apparatus in the Combustion Integrated Rack (Destiny module)",
+      "principal_investigators": {
+        "listed_in_data": [],
+        "note": "Not given in the table or in the pages consulted."
+      },
+      "description": "A continuing series of droplet-combustion experiments in which methanol and heptane droplets are burned in microgravity under varied ambient pressure and oxygen / nitrogen / CO2 / helium mixtures. The table lists one row per test with ambient composition, droplet diameter, flame extinction diameter, burning rate, burn time and how the test ended.",
+      "objectives": [
+        "Document the FLEX droplet-combustion data and methods for the scientific community (stated aim of the NTRS data report).",
+        "Test fuels and environmental conditions that mimic real combustor conditions (LabXchange FLEX-2 description); topics include flame extinguishment and spacecraft fire safety."
+      ],
+      "documented_results": [
+        {
+          "finding": "The NTRS data report presents results of the first 284 tests, run between March 2009 and December 2011, together with hardware, diagnostics, procedures and analysis methods. Its abstract does not summarise scientific outcomes, so none are listed here.",
+          "source": "NTRS 20150023456 (abstract)",
+          "source_url": "https://ntrs.nasa.gov/citations/20150023456"
+        }
+      ],
+      "nasa_links": [
+        {
+          "title": "NTRS: FLEX data report",
+          "url": "https://ntrs.nasa.gov/citations/20150023456",
+          "type": "nasa_technical_report",
+          "status": "opened"
+        },
+        {
+          "title": "LabXchange: Flame Extinguishment Experiment-2 (FLEX-2)",
+          "url": "https://www.labxchange.org/library/items/lb:LabXchange:1dccf81c:html:1",
+          "type": "educational_page",
+          "status": "opened"
+        },
+        {
+          "title": "PSI investigation page PSI-69",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-69",
+          "type": "psi_repository",
+          "status": "listed_in_search_results (page is script-rendered; content not readable)"
+        },
+        {
+          "title": "NASA PSI Data Repository",
+          "url": "https://psi.nasa.gov/physci/repo/",
+          "type": "psi_repository",
+          "status": "listed_in_search_results"
+        }
+      ],
+      "dataset": {
+        "source_file": "PSI-69_Experimental table_FLEX.csv",
+        "source_data_rows": 274,
+        "tests_in_measurements_csv": 274,
+        "measurement_rows": 2663,
+        "distinct_material_labels": 2,
+        "tests_with_data_notes": 10,
+        "test_date_range": {
+          "first": "2009-03-05",
+          "last": "2011-12-08"
+        },
+        "excluded_source_records": [],
+        "fuels": {
+          "Methanol": 157,
+          "Heptane": 117
+        },
+        "test_end_counts": {
+          "Disruption": 61,
+          "Extinction": 186,
+          "Completion": 27
+        },
+        "coverage_note": "The table has 274 tests; the NTRS report mentions 284 for the same period, so about 10 tests are not in this table (reason not stated in the sources)."
+      }
+    },
+    {
+      "experiment_id": "PSI-98",
+      "psi_id": "PSI-98",
+      "short_name": "SAFFIRE-1",
+      "full_name": "Spacecraft Fire Experiment (Saffire-I)",
+      "platform": "Remotely operated module (about 1 m x 1.5 m) on the Cygnus OA-6 cargo spacecraft, run after undocking from the ISS",
+      "principal_investigators": {
+        "listed_in_data": [],
+        "note": "Not given in the table. The NTRS paper is by Ferkul et al."
+      },
+      "description": "A large-scale fire test in an unoccupied spacecraft: a sheet of SIBAL fabric (fiberglass-cotton blend) was burned in a flow duct, once with the flame spreading in the same direction as the airflow (concurrent) and once against it (opposed), at an average 20 cm/s airflow. Two cameras recorded each burn.",
+      "objectives": [
+        "Observe fire growth and spread in microgravity at a much larger scale than earlier experiments.",
+        "Check whether NASA's material flammability selection methods reliably predict behaviour in low gravity.",
+        "Measure how microgravity and reduced oxygen affect flame size."
+      ],
+      "documented_results": [
+        {
+          "finding": "The sample was about ten times larger than any previous microgravity fire test.",
+          "source": "NTRS 20170008805 (abstract)",
+          "source_url": "https://ntrs.nasa.gov/citations/20170008805"
+        },
+        {
+          "finding": "In the concurrent test the flame stayed limited in size, whereas a similar upward-spreading flame on Earth would accelerate and grow.",
+          "source": "NTRS 20170008805 (abstract)",
+          "source_url": "https://ntrs.nasa.gov/citations/20170008805"
+        },
+        {
+          "finding": "Flame spread was slower in this large tunnel than in smaller microgravity tunnels; the authors attribute this to flow acceleration from hot-gas expansion in small tunnels.",
+          "source": "NTRS 20170008805 (abstract)",
+          "source_url": "https://ntrs.nasa.gov/citations/20170008805"
+        },
+        {
+          "finding": "The burn used up a notable share of the available oxygen (the abstract gives no usable unit).",
+          "source": "NTRS 20170008805 (abstract)",
+          "source_url": "https://ntrs.nasa.gov/citations/20170008805"
+        },
+        {
+          "finding": "Conclusion: forced flow in microgravity gives distinct flame behaviour that depends on experiment scale, so full-scale tests matter for spacecraft fire safety.",
+          "source": "NTRS 20170008805 (abstract)",
+          "source_url": "https://ntrs.nasa.gov/citations/20170008805"
+        }
+      ],
+      "nasa_links": [
+        {
+          "title": "NTRS: The Saffire experiment (ICES 2017)",
+          "url": "https://ntrs.nasa.gov/citations/20170008805",
+          "type": "nasa_technical_report",
+          "status": "opened"
+        },
+        {
+          "title": "NASA press release 16-006: NASA Pursues Burning Desire to Study Fire Safety in Space",
+          "url": "https://www.nasa.gov/press-release/nasa-pursues-burning-desire-to-study-fire-safety-in-space",
+          "type": "nasa_press_release",
+          "status": "cited_by_eoportal_article_not_opened"
+        },
+        {
+          "title": "NASA Saffire-I experiment page",
+          "url": "http://www.nasa.gov/mission_pages/station/research/experiments/1761.html",
+          "type": "nasa_experiment_page",
+          "status": "cited_by_eoportal_article_not_opened"
+        },
+        {
+          "title": "NASA PSI Data Repository",
+          "url": "https://psi.nasa.gov/physci/repo/",
+          "type": "psi_repository",
+          "status": "listed_in_search_results"
+        },
+        {
+          "title": "PSI investigation page PSI-98",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-98",
+          "type": "psi_repository",
+          "status": "constructed_from_url_pattern_not_verified"
+        }
+      ],
+      "dataset": {
+        "source_file": "PSI-98_Experimental table_SAFFIRE-1.csv",
+        "source_data_rows": 4,
+        "tests_in_measurements_csv": 2,
+        "measurement_rows": 22,
+        "distinct_material_labels": 1,
+        "tests_with_data_notes": 0,
+        "excluded_source_records": [
+          {
+            "source_row": 4,
+            "content": "F1C1/F1C2: Pre-test flow visulation data for sample 1",
+            "reason": "Pointer to pre-test flow-visualisation data, not a test with measurements"
+          },
+          {
+            "source_row": 5,
+            "content": "F2C1/F2C2: Pre-test flow visulation data for sample 2",
+            "reason": "Pointer to pre-test flow-visualisation data, not a test with measurements"
+          }
+        ],
+        "samples": [
+          "S1 concurrent flow, burn time 420 s",
+          "S2 opposed flow, burn time 70 s"
+        ],
+        "coverage_note": "Two tests, matching the two burns described in the NTRS paper."
+      }
+    },
+    {
+      "experiment_id": "PSI-102",
+      "psi_id": "PSI-102",
+      "short_name": "SAME",
+      "full_name": "Smoke Aerosol Measurement Experiment",
+      "platform": "International Space Station, Microgravity Science Glovebox (Expedition 15); reflight SAME-R in Expedition 24",
+      "principal_investigators": {
+        "listed_in_data": [],
+        "note": "Per NASA fact sheet: David L. Urban (NASA Glenn Research Center); co-investigators Zeng-guang Yuan (NASA Glenn), Jiann Yang and Thomas Cleary (NIST), George Mulholland (University of Maryland)."
+      },
+      "description": "Overheated spacecraft materials were used to generate smoke, and the size and distribution of the smoke particles were measured, together with how particles change as the smoke ages. The reported campaign used 30 samples (six each of five materials) at different airflow rates, heating temperatures and aging times. This table lists only 8 samples, with values for the four Teflon samples.",
+      "objectives": [
+        "Measure the size and distribution of smoke particles from materials found on spacecraft.",
+        "Evaluate the ionization smoke detectors used on the Space Shuttle and the photoelectric detectors used on the ISS.",
+        "Gather data for predicting smoke particle growth and for testing future detection technologies."
+      ],
+      "documented_results": [
+        {
+          "finding": "Teflon smoke was mostly made of particles smaller than 1 micron, yet a large share of the total aerosol mass sat in particles larger than 1 micron.",
+          "source": "NASA SAME fact sheet",
+          "source_url": "https://www.nasa.gov/wp-content/uploads/2025/07/smoke-aerosol-measurement-experiment-same.pdf"
+        },
+        {
+          "finding": "Aging mainly made particles coagulate, with few lost to walls: particle counts fell sharply while total mass stayed roughly constant.",
+          "source": "NASA SAME fact sheet",
+          "source_url": "https://www.nasa.gov/wp-content/uploads/2025/07/smoke-aerosol-measurement-experiment-same.pdf"
+        },
+        {
+          "finding": "Average diameters were around 100-200 nm but can mislead: silicone smoke averaged 227 nm while almost half its mass was in particles over 1000 nm.",
+          "source": "NASA SAME fact sheet",
+          "source_url": "https://www.nasa.gov/wp-content/uploads/2025/07/smoke-aerosol-measurement-experiment-same.pdf"
+        },
+        {
+          "finding": "Ionization detectors respond well to the abundant sub-micron particles, and light-scattering detectors performed well in most cases.",
+          "source": "NASA SAME fact sheet",
+          "source_url": "https://www.nasa.gov/wp-content/uploads/2025/07/smoke-aerosol-measurement-experiment-same.pdf"
+        },
+        {
+          "finding": "Overheating before a fire gives broader size distributions, so detectors covering a wider size range may be more reliable; detection should target early pyrolysis products rather than soot.",
+          "source": "NASA SAME fact sheet",
+          "source_url": "https://www.nasa.gov/wp-content/uploads/2025/07/smoke-aerosol-measurement-experiment-same.pdf"
+        }
+      ],
+      "nasa_links": [
+        {
+          "title": "NASA fact sheet: Smoke Aerosol Measurement Experiment (SAME)",
+          "url": "https://www.nasa.gov/wp-content/uploads/2025/07/smoke-aerosol-measurement-experiment-same.pdf",
+          "type": "nasa_fact_sheet",
+          "status": "opened"
+        },
+        {
+          "title": "NASA PSI Data Repository",
+          "url": "https://psi.nasa.gov/physci/repo/",
+          "type": "psi_repository",
+          "status": "listed_in_search_results"
+        },
+        {
+          "title": "PSI investigation page PSI-102",
+          "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+          "type": "psi_repository",
+          "status": "constructed_from_url_pattern_not_verified"
+        }
+      ],
+      "dataset": {
+        "source_file": "PSI-102_Experimental table_SAME.csv",
+        "source_data_rows": 8,
+        "tests_in_measurements_csv": 8,
+        "measurement_rows": 24,
+        "distinct_material_labels": 5,
+        "tests_with_data_notes": 4,
+        "excluded_source_records": [],
+        "materials_in_table": [
+          "Teflon",
+          "Kapton",
+          "Silicone Rubber",
+          "Lampwick",
+          "Dibutyl Phthalate"
+        ],
+        "coverage_note": "The reported campaign had 30 samples; the table lists 8. Samples 5-8 only say 'same conditions as 1-4'. The fact sheet names cellulose rather than 'lampwick'; the match is likely but not stated."
+      }
+    }
+  ]
+}

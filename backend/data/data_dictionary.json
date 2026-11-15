@@ -1,0 +1,955 @@
+{
+  "title": "Data dictionary for measurements.csv",
+  "created": "2026-11-14",
+  "files": {
+    "experiments.json": "Experiment-level metadata: names, PSI IDs, descriptions, objectives, documented results, NASA links.",
+    "measurements.csv": "All measurements from the five tables in long format (one row per test and variable), keyed by experiment_id and test_id.",
+    "data_dictionary.json": "This file."
+  },
+  "measurements_csv": {
+    "encoding": "UTF-8, comma separated, header row, no BOM",
+    "grain": "One row per test x variable. Empty source cells produce no row, except PSI-102 samples 5-8, which get one 'not_recorded' row per variable.",
+    "total_rows": 4230,
+    "total_tests": 534,
+    "columns": [
+      {
+        "name": "experiment_id",
+        "data_type": "string",
+        "description": "PSI ID of the experiment (PSI-25, PSI-26, PSI-69, PSI-98, PSI-102). Joins to experiments.json.",
+        "missing": "never"
+      },
+      {
+        "name": "test_id",
+        "data_type": "string",
+        "description": "Unique test key built as <experiment_id>-T<NNN>, numbered in source row order after excluding non-test records. Unique across the whole file.",
+        "missing": "never"
+      },
+      {
+        "name": "source_row",
+        "data_type": "integer",
+        "description": "Line number in the source CSV (header = line 1) for traceability.",
+        "missing": "never"
+      },
+      {
+        "name": "test_label",
+        "data_type": "string",
+        "description": "Label used by the source: Test # (PSI-25, PSI-26), FLEX Identifier (PSI-69), Sample Number (PSI-98), Sample # (PSI-102). Not always unique (PSI-26, PSI-69 have repeats).",
+        "missing": "never"
+      },
+      {
+        "name": "sample_id",
+        "data_type": "string",
+        "description": "Sample # where the source separates it from the test label (PSI-25, PSI-26 only).",
+        "missing": "blank for PSI-69, PSI-98, PSI-102"
+      },
+      {
+        "name": "pi",
+        "data_type": "string",
+        "description": "Principal investigator surname from the PI column (PSI-25 only).",
+        "missing": "blank for the other experiments"
+      },
+      {
+        "name": "test_date",
+        "data_type": "date (YYYY-MM-DD)",
+        "description": "Test date parsed from the source. Dates are kept as written, even when the year looks wrong; see test_note.",
+        "missing": "blank for PSI-98 and PSI-102 (no date in source)"
+      },
+      {
+        "name": "gmt_day_of_year",
+        "data_type": "integer",
+        "description": "The source column 'GMT' in PSI-25 and PSI-26 is the day of the year (it matches the date in all but 8 rows), not a clock time.",
+        "missing": "blank for other experiments"
+      },
+      {
+        "name": "test_time_gmt",
+        "data_type": "time (HH:MM:SS)",
+        "description": "Clock time (GMT) from 'Test GMT' in PSI-69.",
+        "missing": "blank for other experiments and for one FLEX test (test 9) with no time"
+      },
+      {
+        "name": "material",
+        "data_type": "string",
+        "description": "Fuel or sample material text from the source, with repeated spaces collapsed.",
+        "missing": "never"
+      },
+      {
+        "name": "variable",
+        "data_type": "string",
+        "description": "Name of the measured or recorded quantity; see 'variables' below.",
+        "missing": "never"
+      },
+      {
+        "name": "value",
+        "data_type": "decimal",
+        "description": "Cleaned numeric value; blank for text variables and for values that cannot be given as one number (see quality_flag).",
+        "missing": "blank when not numeric or not available"
+      },
+      {
+        "name": "unit",
+        "data_type": "string",
+        "description": "Unit of value; blank for text variables.",
+        "missing": "blank for text variables"
+      },
+      {
+        "name": "value_type",
+        "data_type": "string",
+        "description": "'numeric' or 'text'.",
+        "allowed_values": [
+          "numeric",
+          "text"
+        ],
+        "missing": "never"
+      },
+      {
+        "name": "raw_value",
+        "data_type": "string",
+        "description": "The cell exactly as in the source (trimmed). Use it when value is blank.",
+        "missing": "blank only for 'not_recorded' rows"
+      },
+      {
+        "name": "quality_flag",
+        "data_type": "string",
+        "description": "Semicolon-separated flags describing cleaning or doubts about the value; see quality_flags.",
+        "missing": "blank means no issue"
+      },
+      {
+        "name": "test_note",
+        "data_type": "string",
+        "description": "Test-level issue (repeated for each row of the test): date or GMT inconsistencies, duplicate labels, suspicious columns.",
+        "missing": "blank means no note"
+      }
+    ]
+  },
+  "variables": [
+    {
+      "variable": "flow_restrictor_setting",
+      "data_type": "integer",
+      "unit": "setting",
+      "description": "Flow-restrictor setting recorded for the test (values 0, 1 or 2 in the data).",
+      "notes": null,
+      "by_experiment": {
+        "PSI-25": {
+          "source_column": "Flow restrictor",
+          "tests": 129,
+          "values_present": 129,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {},
+          "min": 0.0,
+          "max": 2.0
+        }
+      }
+    },
+    {
+      "variable": "fan_display",
+      "data_type": "text",
+      "unit": null,
+      "description": "Free-text record of the fan display readings during the test (sequences, 'pot' values and notes).",
+      "notes": "Not parsed: sequences of readings are kept as written.",
+      "by_experiment": {
+        "PSI-25": {
+          "source_column": "Fan display",
+          "tests": 129,
+          "values_present": 116,
+          "empty_in_source": 13,
+          "non_numeric_or_special": 0,
+          "quality_flags": {}
+        }
+      }
+    },
+    {
+      "variable": "air_display",
+      "data_type": "text",
+      "unit": null,
+      "description": "Free-text record of the air display readings during the test.",
+      "notes": "Not parsed.",
+      "by_experiment": {
+        "PSI-25": {
+          "source_column": "Air display",
+          "tests": 129,
+          "values_present": 125,
+          "empty_in_source": 4,
+          "non_numeric_or_special": 0,
+          "quality_flags": {}
+        }
+      }
+    },
+    {
+      "variable": "radiometer_gain",
+      "data_type": "text",
+      "unit": null,
+      "description": "Radiometer gain setting(s) used. The source header lists the possible gains 1000, 250, 50, 10; values such as '250>50>250' mean the gain was changed during the test.",
+      "notes": "Not parsed.",
+      "by_experiment": {
+        "PSI-25": {
+          "source_column": "Radiometer gain (1000 250 50 10)",
+          "tests": 129,
+          "values_present": 129,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {}
+        }
+      }
+    },
+    {
+      "variable": "total_frames_shot",
+      "data_type": "integer",
+      "unit": "frames",
+      "description": "Total number of frames shot in the test.",
+      "notes": "Some values are 'none', 'video' or free text.",
+      "by_experiment": {
+        "PSI-25": {
+          "source_column": "Total Frames Shot",
+          "tests": 129,
+          "values_present": 123,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 6,
+          "quality_flags": {
+            "reported_none": 1,
+            "non_numeric": 2,
+            "video_only": 3
+          },
+          "min": 2.0,
+          "max": 316.0
+        }
+      }
+    },
+    {
+      "variable": "o2_initial_pct_vol",
+      "data_type": "decimal",
+      "unit": "% by volume",
+      "description": "Calibrated oxygen concentration at the start of the test.",
+      "notes": null,
+      "by_experiment": {
+        "PSI-25": {
+          "source_column": "Calibrated initial O2 % by vol",
+          "tests": 129,
+          "values_present": 129,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {},
+          "min": 13.6,
+          "max": 22.2
+        }
+      }
+    },
+    {
+      "variable": "o2_final_pct_vol",
+      "data_type": "decimal",
+      "unit": "% by volume",
+      "description": "Calibrated oxygen concentration at the end of the test.",
+      "notes": "Values below 5 or above 25 are flagged suspect_value.",
+      "by_experiment": {
+        "PSI-25": {
+          "source_column": "Calibrated final O2 % by vol",
+          "tests": 129,
+          "values_present": 127,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 2,
+          "quality_flags": {
+            "suspect_value": 5,
+            "reported_none": 2
+          },
+          "min": 0.6,
+          "max": 40.4
+        }
+      }
+    },
+    {
+      "variable": "co2_initial_pct_vol",
+      "data_type": "decimal",
+      "unit": "% by volume",
+      "description": "Carbon dioxide concentration at the start of the test.",
+      "notes": null,
+      "by_experiment": {
+        "PSI-25": {
+          "source_column": "Initial CO2 % by vol",
+          "tests": 129,
+          "values_present": 127,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 2,
+          "quality_flags": {
+            "reported_none": 2
+          },
+          "min": 0.0,
+          "max": 1.85
+        }
+      }
+    },
+    {
+      "variable": "co2_final_pct_vol",
+      "data_type": "decimal",
+      "unit": "% by volume",
+      "description": "Carbon dioxide concentration at the end of the test.",
+      "notes": null,
+      "by_experiment": {
+        "PSI-25": {
+          "source_column": "Final CO2 % by vol",
+          "tests": 129,
+          "values_present": 123,
+          "empty_in_source": 1,
+          "non_numeric_or_special": 5,
+          "quality_flags": {
+            "reported_none": 5
+          },
+          "min": 0.2,
+          "max": 3.22
+        }
+      }
+    },
+    {
+      "variable": "co_initial_ppm",
+      "data_type": "decimal",
+      "unit": "ppm",
+      "description": "Carbon monoxide concentration at the start of the test.",
+      "notes": "Small negative values (instrument baseline) are kept and flagged negative_value.",
+      "by_experiment": {
+        "PSI-25": {
+          "source_column": "Initial CO (ppm)",
+          "tests": 129,
+          "values_present": 126,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 3,
+          "quality_flags": {
+            "negative_value": 13,
+            "over_range": 1,
+            "reported_none": 2
+          },
+          "min": -3.0,
+          "max": 950.0
+        }
+      }
+    },
+    {
+      "variable": "co_final_ppm",
+      "data_type": "decimal",
+      "unit": "ppm",
+      "description": "Carbon monoxide concentration at the end of the test.",
+      "notes": "'OR' / 'over' mean over range; '>500' is a lower bound. Raw text is in raw_value.",
+      "by_experiment": {
+        "PSI-25": {
+          "source_column": "Final CO (ppm)",
+          "tests": 129,
+          "values_present": 120,
+          "empty_in_source": 1,
+          "non_numeric_or_special": 8,
+          "quality_flags": {
+            "reported_none": 4,
+            "censored_greater_than": 1,
+            "over_range": 3
+          },
+          "min": 0.3,
+          "max": 950.0
+        }
+      }
+    },
+    {
+      "variable": "as_run_test_number",
+      "data_type": "integer",
+      "unit": "index",
+      "description": "Order in which the test was run.",
+      "notes": "Not unique: some numbers repeat in the source.",
+      "by_experiment": {
+        "PSI-26": {
+          "source_column": "As Run Test #",
+          "tests": 121,
+          "values_present": 121,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {},
+          "min": 1.0,
+          "max": 116.0
+        }
+      }
+    },
+    {
+      "variable": "ambient_pressure_mmhg",
+      "data_type": "decimal",
+      "unit": "mmHg",
+      "description": "Ambient pressure in the chamber at the start of the test.",
+      "notes": "One test has 0, flagged suspect_value.",
+      "by_experiment": {
+        "PSI-69": {
+          "source_column": "Ambient pressure; mmHg",
+          "tests": 274,
+          "values_present": 274,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {
+            "suspect_value": 1
+          },
+          "min": 0.0,
+          "max": 2319.9
+        }
+      }
+    },
+    {
+      "variable": "o2_initial_mole_fraction",
+      "data_type": "decimal",
+      "unit": "mole fraction",
+      "description": "Initial mole fraction of oxygen (O2) in the ambient gas.",
+      "notes": "Source header says 'O'; read as O2.",
+      "by_experiment": {
+        "PSI-69": {
+          "source_column": "O initial ambient composition; mole fraction",
+          "tests": 274,
+          "values_present": 274,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {},
+          "min": 0.12,
+          "max": 0.34
+        }
+      }
+    },
+    {
+      "variable": "n2_initial_mole_fraction",
+      "data_type": "decimal",
+      "unit": "mole fraction",
+      "description": "Initial mole fraction of nitrogen (N2) in the ambient gas.",
+      "notes": "Source header says 'N'; read as N2.",
+      "by_experiment": {
+        "PSI-69": {
+          "source_column": "N initial ambient composition; mole fraction",
+          "tests": 274,
+          "values_present": 274,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {},
+          "min": 0.09,
+          "max": 0.88
+        }
+      }
+    },
+    {
+      "variable": "co2_initial_mole_fraction",
+      "data_type": "decimal",
+      "unit": "mole fraction",
+      "description": "Initial mole fraction of carbon dioxide (CO2) in the ambient gas.",
+      "notes": "Source header says 'CO'; read as CO2 because O2+N2+CO+He then sums to 1 (values up to 0.7 would be implausible for CO).",
+      "by_experiment": {
+        "PSI-69": {
+          "source_column": "CO initial ambient composition; mole fraction",
+          "tests": 274,
+          "values_present": 274,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {},
+          "min": 0.0,
+          "max": 0.7
+        }
+      }
+    },
+    {
+      "variable": "he_initial_mole_fraction",
+      "data_type": "decimal",
+      "unit": "mole fraction",
+      "description": "Initial mole fraction of helium in the ambient gas.",
+      "notes": null,
+      "by_experiment": {
+        "PSI-69": {
+          "source_column": "He initial ambient composition; mole fraction",
+          "tests": 274,
+          "values_present": 274,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {},
+          "min": 0.0,
+          "max": 0.45
+        }
+      }
+    },
+    {
+      "variable": "droplet_initial_diameter_mm",
+      "data_type": "decimal",
+      "unit": "mm",
+      "description": "Initial droplet diameter.",
+      "notes": "Empty or en dash when not available.",
+      "by_experiment": {
+        "PSI-69": {
+          "source_column": "Droplet initial diameter; mm",
+          "tests": 274,
+          "values_present": 262,
+          "empty_in_source": 6,
+          "non_numeric_or_special": 6,
+          "quality_flags": {
+            "dash_in_source": 6
+          },
+          "min": 1.1,
+          "max": 4.67
+        }
+      }
+    },
+    {
+      "variable": "flame_extinction_diameter_mm",
+      "data_type": "decimal",
+      "unit": "mm",
+      "description": "Droplet diameter at which the visible flame went out.",
+      "notes": "Often missing (49 empty cells plus 28 en dashes in the source); 0 appears in some tests and is not defined in the table.",
+      "by_experiment": {
+        "PSI-69": {
+          "source_column": "Visible flame extinction diameter; mm",
+          "tests": 274,
+          "values_present": 197,
+          "empty_in_source": 49,
+          "non_numeric_or_special": 28,
+          "quality_flags": {
+            "dash_in_source": 28
+          },
+          "min": 0.0,
+          "max": 4.6
+        }
+      }
+    },
+    {
+      "variable": "burning_rate_mm2_per_s",
+      "data_type": "decimal",
+      "unit": "mm^2/s",
+      "description": "Droplet burning rate.",
+      "notes": "Source header says 'Burning rate; mm'; read as mm^2/s because the values (0.05-1.06) are typical burning-rate constants.",
+      "by_experiment": {
+        "PSI-69": {
+          "source_column": "Burning rate; mm",
+          "tests": 274,
+          "values_present": 258,
+          "empty_in_source": 16,
+          "non_numeric_or_special": 0,
+          "quality_flags": {},
+          "min": 0.05,
+          "max": 1.06
+        }
+      }
+    },
+    {
+      "variable": "burn_time_s",
+      "data_type": "decimal",
+      "unit": "s",
+      "description": "Burn time.",
+      "notes": "FLEX: a few values are approximate ('~6'). SAFFIRE-1: duration of the burn.",
+      "by_experiment": {
+        "PSI-69": {
+          "source_column": "Burn time; s",
+          "tests": 274,
+          "values_present": 268,
+          "empty_in_source": 6,
+          "non_numeric_or_special": 0,
+          "quality_flags": {
+            "approximate": 2
+          },
+          "min": 0.3,
+          "max": 39.2
+        },
+        "PSI-98": {
+          "source_column": "Burn Time (s)",
+          "tests": 2,
+          "values_present": 2,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {},
+          "min": 70.0,
+          "max": 420.0
+        }
+      }
+    },
+    {
+      "variable": "test_end",
+      "data_type": "text",
+      "unit": null,
+      "description": "How the FLEX test ended: Extinction, Disruption or Completion.",
+      "notes": "The table does not define these terms.",
+      "by_experiment": {
+        "PSI-69": {
+          "source_column": "Test end",
+          "tests": 274,
+          "values_present": 274,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {}
+        }
+      }
+    },
+    {
+      "variable": "sample_thickness_cm",
+      "data_type": "decimal",
+      "unit": "cm",
+      "description": "Sample thickness as given in the table.",
+      "notes": "0.37 looks large for a fabric; the original unit may be mm. Verify before use.",
+      "by_experiment": {
+        "PSI-98": {
+          "source_column": "Sample Thickness (cm)",
+          "tests": 2,
+          "values_present": 2,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {},
+          "min": 0.37,
+          "max": 0.37
+        }
+      }
+    },
+    {
+      "variable": "sample_length_cm",
+      "data_type": "decimal",
+      "unit": "cm",
+      "description": "Sample length as given in the table.",
+      "notes": "The NTRS abstract gives the sheet as 94 x 40.6 cm; length and width labels may be interchanged.",
+      "by_experiment": {
+        "PSI-98": {
+          "source_column": "Sample Length (cm)",
+          "tests": 2,
+          "values_present": 2,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {},
+          "min": 40.6,
+          "max": 40.6
+        }
+      }
+    },
+    {
+      "variable": "sample_width_cm",
+      "data_type": "decimal",
+      "unit": "cm",
+      "description": "Sample width as given in the table.",
+      "notes": "See sample_length_cm.",
+      "by_experiment": {
+        "PSI-98": {
+          "source_column": "Sample Width (cm)",
+          "tests": 2,
+          "values_present": 2,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {},
+          "min": 94.0,
+          "max": 94.0
+        }
+      }
+    },
+    {
+      "variable": "air_flow_cm_s",
+      "data_type": "decimal",
+      "unit": "cm/s",
+      "description": "Air flow speed.",
+      "notes": "Used by PSI-98 and PSI-102.",
+      "by_experiment": {
+        "PSI-98": {
+          "source_column": "Air Flow (cm/s)",
+          "tests": 2,
+          "values_present": 2,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {},
+          "min": 20.0,
+          "max": 20.0
+        },
+        "PSI-102": {
+          "source_column": "Air Flow (cm/s)",
+          "tests": 8,
+          "values_present": 4,
+          "empty_in_source": 4,
+          "non_numeric_or_special": 0,
+          "quality_flags": {
+            "not_recorded": 4
+          },
+          "min": 5.0,
+          "max": 10.0
+        }
+      }
+    },
+    {
+      "variable": "o2_percent",
+      "data_type": "decimal",
+      "unit": "%",
+      "description": "Oxygen concentration during the burn.",
+      "notes": "Source gives '21.5 - 21.7' and '~ 21.5'; stored as midpoint 21.6 (range_midpoint) and 21.5 (approximate).",
+      "by_experiment": {
+        "PSI-98": {
+          "source_column": "Percent O2",
+          "tests": 2,
+          "values_present": 2,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {
+            "range_midpoint": 1,
+            "approximate": 1
+          },
+          "min": 21.5,
+          "max": 21.6
+        }
+      }
+    },
+    {
+      "variable": "ignition_power_w",
+      "data_type": "decimal",
+      "unit": "W",
+      "description": "Ignition power.",
+      "notes": null,
+      "by_experiment": {
+        "PSI-98": {
+          "source_column": "Ignition Power (W)",
+          "tests": 2,
+          "values_present": 2,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {},
+          "min": 182.0,
+          "max": 182.0
+        }
+      }
+    },
+    {
+      "variable": "ignition_time_s",
+      "data_type": "decimal",
+      "unit": "s",
+      "description": "Ignition time.",
+      "notes": null,
+      "by_experiment": {
+        "PSI-98": {
+          "source_column": "Ignition Time (s)",
+          "tests": 2,
+          "values_present": 2,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {},
+          "min": 8.0,
+          "max": 8.0
+        }
+      }
+    },
+    {
+      "variable": "flow_direction",
+      "data_type": "text",
+      "unit": null,
+      "description": "Flame spread relative to the airflow: Concurrent or Opposed.",
+      "notes": null,
+      "by_experiment": {
+        "PSI-98": {
+          "source_column": "Flow Direction",
+          "tests": 2,
+          "values_present": 2,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {}
+        }
+      }
+    },
+    {
+      "variable": "camera_1_id",
+      "data_type": "text",
+      "unit": null,
+      "description": "Identifier of the Camera 1 data set for the test.",
+      "notes": "An ID, not a measurement.",
+      "by_experiment": {
+        "PSI-98": {
+          "source_column": "Camera 1",
+          "tests": 2,
+          "values_present": 2,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {}
+        }
+      }
+    },
+    {
+      "variable": "camera_2_id",
+      "data_type": "text",
+      "unit": null,
+      "description": "Identifier of the Camera 2 data set for the test.",
+      "notes": "An ID, not a measurement.",
+      "by_experiment": {
+        "PSI-98": {
+          "source_column": "Camera 2",
+          "tests": 2,
+          "values_present": 2,
+          "empty_in_source": 0,
+          "non_numeric_or_special": 0,
+          "quality_flags": {}
+        }
+      }
+    },
+    {
+      "variable": "weight_loss_rate_mg_min",
+      "data_type": "decimal",
+      "unit": "mg/min",
+      "description": "Sample weight loss rate.",
+      "notes": "Empty for samples 5-8.",
+      "by_experiment": {
+        "PSI-102": {
+          "source_column": "Weight loss rate (mg/min)",
+          "tests": 8,
+          "values_present": 4,
+          "empty_in_source": 4,
+          "non_numeric_or_special": 0,
+          "quality_flags": {
+            "not_recorded": 4
+          },
+          "min": 1.0,
+          "max": 2.0
+        }
+      }
+    },
+    {
+      "variable": "aging_duration_min",
+      "data_type": "decimal",
+      "unit": "min",
+      "description": "Smoke aging duration.",
+      "notes": "Empty for samples 5-8.",
+      "by_experiment": {
+        "PSI-102": {
+          "source_column": "Aging Duration (minutes)",
+          "tests": 8,
+          "values_present": 4,
+          "empty_in_source": 4,
+          "non_numeric_or_special": 0,
+          "quality_flags": {
+            "not_recorded": 4
+          },
+          "min": 1.0,
+          "max": 20.0
+        }
+      }
+    }
+  ],
+  "missing_value_conventions": [
+    {
+      "source_value": "(empty cell)",
+      "treatment": "No row is written for that variable; counted in 'empty_in_source' per variable."
+    },
+    {
+      "source_value": "none",
+      "treatment": "value blank, flag reported_none (the source says the quantity was not available)."
+    },
+    {
+      "source_value": "en dash (–) in PSI-69",
+      "treatment": "value blank, flag dash_in_source (34 cells; probably 'not available', meaning not defined in the table)."
+    },
+    {
+      "source_value": "OR, over",
+      "treatment": "value blank, flag over_range (reading above the instrument range)."
+    },
+    {
+      "source_value": ">500",
+      "treatment": "value blank, flag censored_greater_than; the bound is kept in raw_value."
+    },
+    {
+      "source_value": "video",
+      "treatment": "value blank, flag video_only (frames not counted; recorded as video)."
+    },
+    {
+      "source_value": "~6, ~9",
+      "treatment": "value 6 / 9, flag approximate."
+    },
+    {
+      "source_value": "21.5 - 21.7",
+      "treatment": "value 21.6 (midpoint), flag range_midpoint."
+    },
+    {
+      "source_value": "Other text in numeric columns (e.g. '300+ +102', '10 postburn only')",
+      "treatment": "value blank, flag non_numeric."
+    }
+  ],
+  "quality_flags": {
+    "reported_none": "Source says 'none'.",
+    "dash_in_source": "Source has an en dash instead of a value.",
+    "over_range": "Reading over instrument range.",
+    "censored_greater_than": "Value only known as 'greater than' a bound.",
+    "video_only": "Source says 'video' instead of a frame count.",
+    "approximate": "Source value is marked approximate (~).",
+    "range_midpoint": "Source gives a range; value is its midpoint.",
+    "non_numeric": "Free text in a numeric column.",
+    "suspect_value": "Physically implausible: O2 outside 5-25 % by volume (5 values in PSI-25) or ambient pressure of 0 mmHg (1 value in PSI-69). Kept unchanged.",
+    "negative_value": "Negative CO reading, probably instrument baseline offset. Kept unchanged.",
+    "not_recorded": "Variable has no value for this test (PSI-102 samples 5-8)."
+  },
+  "special_cases": [
+    "PSI-26 source row 67 (SOOT Cleaning, 2012-08-03) and PSI-98 source rows 4-5 (pointers to pre-test flow-visualisation data) are not tests and are not in measurements.csv; they are listed under 'dataset.excluded_source_records' in experiments.json.",
+    "PSI-26 'As Run Test #' repeats (24, 85, 89-91 appear twice), and its Test # labels 53, 75, 114 and 118 each belong to two tests; test_id stays unique.",
+    "PSI-25 dates in 2016 (O20-O22) and 2018 (T9, T18) differ from the 2014 campaign; PSI-26 has a date in 2103; one PSI-26 date is malformed ('6/29/`12'). These are noted, not corrected.",
+    "PSI-25 B14 has inconsistent CO2/CO values (possible column shift); PSI-25 O10 has a GMT day that does not match its date.",
+    "PSI-69: 193F001 appears in tests 70 and 73 with the same date and time; six tests (69, 75, 76, 79, 80, 81) have initial mole fractions summing to 0.98.",
+    "Source file PSI-69 uses Windows-1252 encoding; all output is UTF-8."
+  ],
+  "source_files": {
+    "PSI-25": {
+      "file": "PSI-25_Experimental table_BASS-II.csv",
+      "columns": [
+        "PI",
+        "Test #",
+        "Date",
+        "GMT",
+        "Sample #",
+        "Fuel Sample Material",
+        "Flow restrictor",
+        "Fan display",
+        "Air display",
+        "Radiometer gain (1000 250 50 10)",
+        "Total Frames Shot",
+        "Calibrated initial O2 % by vol",
+        "Calibrated final O2 % by vol",
+        "Initial CO2 % by vol",
+        "Final CO2 % by vol",
+        "Initial CO (ppm)",
+        "Final CO (ppm)"
+      ]
+    },
+    "PSI-26": {
+      "file": "PSI-26_Experimental table_BASS.csv",
+      "columns": [
+        "Date",
+        "GMT",
+        "As Run Test #",
+        "Test #",
+        "Sample #",
+        "Fuel Sample Material"
+      ]
+    },
+    "PSI-69": {
+      "file": "PSI-69_Experimental table_FLEX.csv",
+      "columns": [
+        "FLEX Test #",
+        "FLEX Identifier",
+        "Test Date",
+        "Test GMT",
+        "Fuel",
+        "Ambient pressure; mmHg",
+        "O initial ambient composition; mole fraction",
+        "N initial ambient composition; mole fraction",
+        "CO initial ambient composition; mole fraction",
+        "He initial ambient composition; mole fraction",
+        "Droplet initial diameter; mm",
+        "Visible flame extinction diameter; mm",
+        "Burning rate; mm",
+        "Burn time; s",
+        "Test end"
+      ]
+    },
+    "PSI-98": {
+      "file": "PSI-98_Experimental table_SAFFIRE-1.csv",
+      "columns": [
+        "Sample Number",
+        "Material",
+        "Sample Thickness (cm)",
+        "Sample Length (cm)",
+        "Sample Width (cm)",
+        "Air Flow (cm/s)",
+        "Percent O2",
+        "Ignition Power (W)",
+        "Ignition Time (s)",
+        "Burn Time (s)",
+        "Flow Direction",
+        "Camera 1",
+        "Camera 2"
+      ]
+    },
+    "PSI-102": {
+      "file": "PSI-102_Experimental table_SAME.csv",
+      "columns": [
+        "Sample #",
+        "Sample Material",
+        "Air Flow (cm/s)",
+        "Weight loss rate (mg/min)",
+        "Aging Duration (minutes)"
+      ]
+    }
+  }
+}
